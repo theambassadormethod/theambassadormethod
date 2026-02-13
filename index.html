@@ -316,6 +316,372 @@
             position: relative;
             overflow: hidden;
             transition: color 0.35s ease;
+            z-index: 1;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: translateX(-101%);
+            transition: transform 0.35s ease;
+            z-index: 1;
+        }
+
+        .btn:hover::before { transform: translateX(0); }
+        .btn:hover { color: var(--deep-navy); }
+
+        .btn-solid {
+            background: var(--gold);
+            color: var(--deep-navy);
+        }
+
+        .btn-solid::before { background: var(--navy); }
+        .btn-solid:hover { color: var(--gold); }
+
+        /* ── DOWNLOAD BUTTON SPECIAL ── */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-decoration: none;
+            text-transform: uppercase;
+            border: 1px solid var(--gold);
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--deep-navy);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s ease;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.2);
+        }
+
+        .btn-download::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(201, 168, 76, 0.4);
+        }
+
+        .btn-download:hover::before {
+            opacity: 1;
+        }
+
+        .btn-download .icon {
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-download .text {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ── SECTIONS COMMON ── */
+        .section {
+            position: relative;
+            z-index: 1;
+            padding: 8rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            color: var(--white);
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+        }
+
+        .section-title em {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 3rem;
+        }
+
+        /* ── DOWNLOAD SECTION ── */
+        .download-section {
+            background: var(--charcoal);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            padding: 3rem;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 0% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 100%, rgba(44, 95, 126, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .download-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .download-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            opacity: 0.9;
+        }
+
+        .download-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .download-desc {
+            font-size: 0.95rem;
+            color: var(--silver-dim);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .download-meta-item {
+            font-size: 0.75rem;
+            color: var(--silver-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .download-meta-item strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.65rem;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+            }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn, .btn-download {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .download-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .download-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-canvas">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#hero" class="nav-brand">THE AMBASSADOR METHOD™</a>
+        <ul class="nav-links">
+            <li><a href="#metodo">Il Metodo</a></li>
+            <li><a href="#esperienza">Esperienza</a></li>
+            <li><a href="#servizi">Servizi</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">Protocolli d'Élite per la Ristorazione di Lusso</div>
+            <div class="gold-rule"></div>
+            
+            <h1>THE AMBASSADOR<br>METHOD™</h1>
+            
+            <div class="hero-author">Raffaele D'Urso</div>
+            <div class="hero-tagline">L'Ingegneria dell'Ospitalità</div>
+
+            <div class="stats-row">
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Anni di Esperienza</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5★</span>
+                    <span class="stat-label">Luxury Properties</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Metodo Originale</span>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <a href="#contatti" class="btn btn-solid"><span>Richiedi Consulenza</span></a>
+                <a href="#metodo" class="btn"><span>Scopri il Metodo</span></a>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Business Case Download Section -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="download-section">
+                <div class="download-content">
+                    <div class="download-icon">📊</div>
+                    <h3 class="download-title">Business Case & Financial Projection</h3>
+                    <p class="download-desc">
+                        Scopri l'impatto economico concreto di The Ambassador Method™. 
+                        Un'analisi dettagliata del ROI, delle leve finanziarie e del valore 
+                        generato per strutture di lusso. Documento riservato per General Manager 
+                        e Decision Maker.
+                    </p>
+                    
+                    <a href="downloads/BUSINESS_CASE_AMBASSADOR_METHOD.docx" 
+                       download 
+                       class="btn-download">
+                        <span class="icon">⬇</span>
+                        <span class="text">Scarica il Business Case</span>
+                    </a>
+
+                    <div class="download-meta">
+                        <div class="download-meta-item">
+                            <strong>Formato:</strong> DOCX
+                        </div>
+                        <div class="download-meta-item">
+                            <strong>Impatto:</strong> +€142.000/anno
+                        </div>
+                        <div class="download-meta-item">
+                            <strong>Data:</strong> Febbraio 2026
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Il resto del tuo sito continua qui... -->
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar             border: 1px solid var(--gold);
+            color: var(--gold);
+            background: transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.35s ease;
         }
 
         .btn::before {
